@@ -11,13 +11,13 @@ import java.time.Duration;
 
 public class LoginPage extends BaseClass{
 
-    private static final By USERNAME_FIELD = By.name("j_username_bank");
-    private static final By PASSWORD_FIELD = By.name("j_password_bank");
-    private static final By LOGIN_BUTTON = By.id("btnLoginSubmit");
+    private static final By USERNAME_FIELD = By.name("j_username_cc");
+    private static final By PASSWORD_FIELD = By.name("j_password_cc");
+    private static final By LOGIN_BUTTON = By.xpath("//button[@class='btn btn-primary btn-login']");
     private static final By ERROR_MESSAGE = By.xpath("//div[@class='alert alert-block alert-danger fade in']");
     private static final By VALID_MESSAGE = By.xpath("//div[@class='nav toggle header']");
     private static final By CLICK_1 = By.xpath("//a[@class ='user-profile dropdown-toggle']");
-    private static final By CLICK_2 = By.id("logout");
+    private static final By CLICK_2 = By.xpath("//a/i[@class='fa fa-sign-out pull-left']");
 
     public static void enterUsername(WebDriver driver, String username) {
         enterText(driver, USERNAME_FIELD, username);
@@ -42,14 +42,14 @@ public class LoginPage extends BaseClass{
     public static void validMessage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(VALID_MESSAGE));
-        Assert.assertEquals(errorMessage.getText(), "iPay Bank Portal - LOLC Finance PLC | City Branch");
+        Assert.assertEquals(errorMessage.getText(), "iPay Call Center Portal");
         System.out.println("Actual Error Message: " + errorMessage.getText());
     }
 
     public static void isErrorMessageDisplayed(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1000));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(ERROR_MESSAGE));
-        Assert.assertEquals(errorMessage.getText(), "Invalid Username or Password");
+        Assert.assertEquals(errorMessage.getText(), "Invalid username or password");
         System.out.println("Actual Error Message: " + errorMessage.getText());
     }
 }
