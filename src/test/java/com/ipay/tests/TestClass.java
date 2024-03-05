@@ -1,5 +1,6 @@
 package com.ipay.tests;
 
+import com.ipay.main.pages.CustomerSearch;
 import com.ipay.main.webdriver.DriverInitialization;
 import com.ipay.main.pages.LoginPage;
 import org.json.simple.JSONObject;
@@ -11,6 +12,7 @@ public class TestClass {
 
     private WebDriver driver;
     private static JSONObject loginTestData;
+    private static JSONObject cusSearchTestData;
 
     @BeforeMethod
     public void login (){
@@ -19,6 +21,7 @@ public class TestClass {
         driver.manage().window().maximize();
 
         loginTestData = TestDataLoader.LoginTestData();
+        cusSearchTestData = TestDataLoader.CustomerSearch();
 
         LoginPage.enterUsername(driver, loginTestData.get("validUsername").toString());
         LoginPage.enterPassword(driver, loginTestData.get("validPassword").toString());
@@ -39,6 +42,105 @@ public class TestClass {
         LoginPage.clickLoginButton(driver);
         LoginPage.isErrorMessageDisplayed(driver);//Assertion
     }
+
+    @Test(testName = "Search Customer by nic", priority = 3)
+    public void searchCustomerUsingNic(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+
+    @Test(testName = "Search Customer by mobile no", priority = 4)
+    public void searchCustomerUsingMobileNo(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterMobileNo(driver, cusSearchTestData.get("mobileNo").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+    @Test(testName = "Search Customer by username", priority = 4)
+    public void searchCustomerUsingUsername(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterUsername(driver, cusSearchTestData.get("username").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+    @Test(testName = "Search Customer by email", priority = 4)
+    public void searchCustomerUsingEmail(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterEmail(driver, cusSearchTestData.get("email").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+    @Test(testName = "Search Customer by first name", priority = 4)
+    public void searchCustomerUsingFirstName(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterFirstName(driver, cusSearchTestData.get("firstName").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+    @Test(testName = "Search Customer by last name", priority = 4)
+    public void searchCustomerUsingLastName(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterLastName(driver, cusSearchTestData.get("lastName").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+    @Test(testName = "Search Customer by passport no", priority = 4)
+    public void searchCustomerUsingPassportNo(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterPassportNo(driver, cusSearchTestData.get("passportNo").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+    @Test(testName = "Search Customer by bank account no", priority = 4)
+    public void searchCustomerUsingBankAccNo(){
+        CustomerSearch.clickCustomer(driver);
+        CustomerSearch.clickSearchCustomer(driver);
+        CustomerSearch.enterBankAccNo(driver, cusSearchTestData.get("bankAccNo").toString());
+        CustomerSearch.clickSearch(driver);
+        CustomerSearch.clickElement(driver);
+        CustomerSearch.correctPageLoadedInPerCustomer(driver);//Assertion
+        CustomerSearch.clickSwitchCustomer(driver);
+        CustomerSearch.clickClear(driver);
+        CustomerSearch.successfullyCleared(driver);//Assertion
+    }
+
 
 //    @Test(testName = "Verify the response for merchant Customer registration using valid data", priority = 1)
 //    public void merchantRegistration() throws InterruptedException {

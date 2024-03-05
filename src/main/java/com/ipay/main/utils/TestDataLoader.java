@@ -10,6 +10,9 @@ public class TestDataLoader {
     public static JSONObject LoginTestData() {
         return loadTestData("src/main/resources/jsonFiles/login_testData.json");
     }
+    public static JSONObject CustomerSearch() {
+        return loadTestData("src/main/resources/jsonFiles/customerSearch.json");
+    }
 
     private static JSONObject loadTestData(String filePath) {
         try {
