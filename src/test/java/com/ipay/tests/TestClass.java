@@ -1,6 +1,7 @@
 package com.ipay.tests;
 
 import com.ipay.main.pages.CustomerSearch;
+import com.ipay.main.pages.CustomerTransaction;
 import com.ipay.main.webdriver.DriverInitialization;
 import com.ipay.main.pages.LoginPage;
 import org.json.simple.JSONObject;
@@ -13,6 +14,7 @@ public class TestClass {
     private WebDriver driver;
     private static JSONObject loginTestData;
     private static JSONObject cusSearchTestData;
+    private static JSONObject cusTransactionTestData;
 
     @BeforeMethod
     public void login (){
@@ -22,6 +24,7 @@ public class TestClass {
 
         loginTestData = TestDataLoader.LoginTestData();
         cusSearchTestData = TestDataLoader.CustomerSearch();
+        cusTransactionTestData = TestDataLoader.CustomerTransaction();
 
         LoginPage.enterUsername(driver, loginTestData.get("validUsername").toString());
         LoginPage.enterPassword(driver, loginTestData.get("validPassword").toString());
@@ -140,6 +143,74 @@ public class TestClass {
         CustomerSearch.clickClear(driver);
         CustomerSearch.successfullyCleared(driver);//Assertion
     }
+
+    @Test(testName = "Customer Registration by Paid", priority = 5)
+    public void customerTransactionByPaid() throws InterruptedException {
+        CustomerTransaction.clickCustomer(driver);
+        CustomerTransaction.clickCustomerTransaction(driver);
+        CustomerTransaction.search(driver);
+        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerTransaction.clickSearch(driver);
+        CustomerTransaction.clickElements(driver);
+        Thread.sleep(5000);
+        CustomerTransaction.successfullyLoaded(driver);
+    }
+
+    @Test(testName = "Customer Registration by Received", priority = 5)
+    public void customerTransactionByReceived() throws InterruptedException {
+        CustomerTransaction.clickCustomer(driver);
+        CustomerTransaction.clickCustomerTransaction(driver);
+        CustomerTransaction.search(driver);
+        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerTransaction.clickSearch(driver);
+        CustomerTransaction.clickElements(driver);
+        Thread.sleep(5000);
+        CustomerTransaction.clickReceived(driver);
+        Thread.sleep(2000);
+        CustomerTransaction.successfullyLoaded(driver);
+    }
+
+    @Test(testName = "Customer Registration by Failed", priority = 5)
+    public void customerTransactionByFailed() throws InterruptedException {
+        CustomerTransaction.clickCustomer(driver);
+        CustomerTransaction.clickCustomerTransaction(driver);
+        CustomerTransaction.search(driver);
+        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerTransaction.clickSearch(driver);
+        CustomerTransaction.clickElements(driver);
+        Thread.sleep(5000);
+        CustomerTransaction.clickFailed(driver);
+        Thread.sleep(2000);
+        CustomerTransaction.successfullyLoaded(driver);
+    }
+
+    @Test(testName = "Customer Registration by All Transfers", priority = 5)
+    public void customerTransactionByAllTransfers() throws InterruptedException {
+        CustomerTransaction.clickCustomer(driver);
+        CustomerTransaction.clickCustomerTransaction(driver);
+        CustomerTransaction.search(driver);
+        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerTransaction.clickSearch(driver);
+        CustomerTransaction.clickElements(driver);
+        Thread.sleep(5000);
+        CustomerTransaction.clickAllTransfers(driver);
+        Thread.sleep(2000);
+        CustomerTransaction.successfullyLoaded(driver);
+    }
+
+//    @Test(testName = "Customer bank accounts & cards", priority = 6)
+//    public void searchCustomerUsingBankAccNoUsingCards() throws InterruptedException {
+//        CustomerBankAccountsCards.clickCustomer(driver);
+//        CustomerBankAccountsCards.clickCustomerBankAcc(driver);
+//        CustomerBankAccountsCards.search(driver);
+//        CustomerBankAccountsCards.enterNic(driver, cusSearchTestData.get("nic").toString());
+//        CustomerBankAccountsCards.clickSearch(driver);
+//        CustomerBankAccountsCards.clickElements(driver);
+//    //    Thread.sleep(50000);
+//        CustomerBankAccountsCards.clickCards(driver);
+//        CustomerBankAccountsCards.clickDelete(driver);
+//        CustomerBankAccountsCards.successfullyDeleted(driver); //Assertion
+//    }
 
 
 //    @Test(testName = "Verify the response for merchant Customer registration using valid data", priority = 1)

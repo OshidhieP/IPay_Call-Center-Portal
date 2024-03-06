@@ -28,11 +28,7 @@ public class CustomerSearch extends BaseClass {
     private static final By SWITCH_CUSTOMER_EXISTS = By.xpath("//div[@class='col-md-12']");
     private static final By CLICK_CLEAR = By.xpath("(//button[@class='btn btn-default'])[1]");
     private static final By ITEMS_CLEARED = By.xpath("//span[@class='k-pager-info k-label']");
-//    private static final By
-//    private static final By
-//    private static final By
-//    private static final By
-//    private static final By
+
 
     public static void clickCustomer(WebDriver driver) {
         clickElement(driver, CUSTOMER);
