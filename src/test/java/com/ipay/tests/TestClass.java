@@ -2,6 +2,7 @@ package com.ipay.tests;
 
 import com.ipay.main.pages.CustomerSearch;
 import com.ipay.main.pages.CustomerTransaction;
+import com.ipay.main.pages.Dashboard;
 import com.ipay.main.webdriver.DriverInitialization;
 import com.ipay.main.pages.LoginPage;
 import org.json.simple.JSONObject;
@@ -184,18 +185,45 @@ public class TestClass {
         CustomerTransaction.successfullyLoaded(driver);
     }
 
-    @Test(testName = "Customer Registration by All Transfers", priority = 5)
-    public void customerTransactionByAllTransfers() throws InterruptedException {
-        CustomerTransaction.clickCustomer(driver);
-        CustomerTransaction.clickCustomerTransaction(driver);
-        CustomerTransaction.search(driver);
-        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
-        CustomerTransaction.clickSearch(driver);
-        CustomerTransaction.clickElements(driver);
-        Thread.sleep(5000);
-        CustomerTransaction.clickAllTransfers(driver);
-        Thread.sleep(2000);
-        CustomerTransaction.successfullyLoaded(driver);
+//    @Test(testName = "Customer Registration by All Transfers", priority = 5)
+//    public void customerTransactionByAllTransfers() throws InterruptedException {
+//        CustomerTransaction.clickCustomer(driver);
+//        CustomerTransaction.clickCustomerTransaction(driver);
+//        CustomerTransaction.search(driver);
+//        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
+//        CustomerTransaction.clickSearch(driver);
+//        CustomerTransaction.clickElements(driver);
+//        Thread.sleep(5000);
+//        CustomerTransaction.clickAllTransfers(driver);
+//        Thread.sleep(2000);
+//        CustomerTransaction.successfullyLoaded(driver);
+//    }
+
+    @Test(testName = "Dashboard", priority = 5)
+    public void successDashboardLoaded() throws InterruptedException {
+        Dashboard.clickPendingFraudulentAndVerify(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingCustomer(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickResubmittedCustomer(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingDBA(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingOldCustomerEKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickResubmittedOldCustomerEKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickGiftRedemption(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickOngoingTransaction(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingVKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickResubmittedVKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickCustomerFeedback(driver);
+        Dashboard.clickDashboard(driver);
+
     }
 
 //    @Test(testName = "Customer bank accounts & cards", priority = 6)
