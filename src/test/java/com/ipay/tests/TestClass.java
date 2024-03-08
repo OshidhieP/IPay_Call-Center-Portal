@@ -12,7 +12,7 @@ public class TestClass {
     private WebDriver driver;
     private static JSONObject loginTestData;
     private static JSONObject cusSearchTestData;
-    private static JSONObject cusTransactionTestData;
+    private static JSONObject customer;
 
     @BeforeMethod
     public void login (){
@@ -22,7 +22,7 @@ public class TestClass {
 
         loginTestData = TestDataLoader.LoginTestData();
         cusSearchTestData = TestDataLoader.CustomerSearch();
-        cusTransactionTestData = TestDataLoader.CustomerTransaction();
+        customer = TestDataLoader.CustomerTransaction();
 
         LoginPage.enterUsername(driver, loginTestData.get("validUsername").toString());
         LoginPage.enterPassword(driver, loginTestData.get("validPassword").toString());
@@ -238,6 +238,19 @@ public class TestClass {
         CustomerBankAccountsCards.clickElements(driver);
         CustomerBankAccountsCards.clickBank(driver);
         CustomerBankAccountsCards.clickBankDelete(driver);
+    }
+
+    @Test(testName = "Customer Reset Credential Attempts - Customer Registration", priority = 7)
+    public void customerResetCredentialAttemptsCustomerRegistration() {
+        CustomerResetCredentialAttempts.clickCustomer(driver);
+        CustomerResetCredentialAttempts.clickCusResetCredentials(driver);
+        CustomerResetCredentialAttempts.clickCusReg(driver);
+        CustomerResetCredentialAttempts.enterMobileNo(driver, customer.get("mobileNo").toString());
+        CustomerResetCredentialAttempts.clickSearch(driver);
+        CustomerResetCredentialAttempts.clickCheckbox(driver);
+        CustomerResetCredentialAttempts.clickCusResetCredentials(driver);
+        CustomerResetCredentialAttempts.clickResetAttempts(driver);
+        CustomerResetCredentialAttempts.successResetAttempt(driver);
     }
 
     @AfterMethod

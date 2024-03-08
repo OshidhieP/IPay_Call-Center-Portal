@@ -14,7 +14,7 @@ public class TestDataLoader {
         return loadTestData("src/main/resources/jsonFiles/customerSearch.json");
     }
     public static JSONObject CustomerTransaction() {
-        return loadTestData("src/main/resources/jsonFiles/customer_transaction.json");
+        return loadTestData("src/main/resources/jsonFiles/customer.json");
     }
 
     private static JSONObject loadTestData(String filePath) {
