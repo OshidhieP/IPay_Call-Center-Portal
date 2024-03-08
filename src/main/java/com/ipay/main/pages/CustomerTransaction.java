@@ -26,7 +26,7 @@ public class CustomerTransaction  extends BaseClass {
       private static final By DATA_LOADED = By.xpath("(//span[@class='k-pager-info k-label'])[2]");
       private static final By RECEIVED = By.xpath("(//input[@name='tranType']) [2]");
       private static final By FAILED = By.xpath("(//input[@name='tranType']) [3]");
-      private static final By ALL_TRANS = By.xpath("(//input[@name='tranType']) [4]");
+      private static final By ALL_TRANS = By.xpath("//input[@name=\"tranType\" and @id=\"radio-04\" and @value=\"4\"]");
 
     public static void clickCustomer(WebDriver driver) {
         clickElement(driver, CUSTOMER);
@@ -43,11 +43,13 @@ public class CustomerTransaction  extends BaseClass {
     public static void clickSearch(WebDriver driver) {
         clickElement(driver, CLICK_SEARCH);
     }
-    public static void clickElements(WebDriver driver) {
+    public static void clickElements(WebDriver driver) throws InterruptedException {
         doubleClick(driver, CLICK_ELEMENT);
+        Thread.sleep(3000);
     }
-    public static void clickReceived(WebDriver driver) {
+    public static void clickReceived(WebDriver driver) throws InterruptedException {
         doubleClick(driver, RECEIVED);
+        Thread.sleep(2000);
     }
     public static void clickFailed(WebDriver driver) {
         doubleClick(driver, FAILED);
@@ -56,7 +58,7 @@ public class CustomerTransaction  extends BaseClass {
         doubleClick(driver, ALL_TRANS);
     }
 
-    public static void successfullyLoaded(WebDriver driver) {
+    public static void successfullyLoaded(WebDriver driver) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(DATA_LOADED));
 
@@ -64,13 +66,8 @@ public class CustomerTransaction  extends BaseClass {
         String expectedPattern = "\\d+ - \\d+ of \\d+ items";
 
         // Assert that the message matches the expected pattern
+        Thread.sleep(2000);
         Assert.assertTrue(errorMessage.getText().matches(expectedPattern));
-
-        // Extract and assert the "items" part using Regex
-        Pattern itemsPattern = Pattern.compile("of (\\d+) items");
-        Matcher matcher = itemsPattern.matcher(errorMessage.getText());
-
-        System.out.println("Actual Error Message: " + errorMessage.getText());
     }
 
 

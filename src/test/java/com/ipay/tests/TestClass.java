@@ -37,6 +37,32 @@ public class TestClass {
         LoginPage.validMessage(driver);//Assertion
     }
 
+    @Test(testName = "Dashboard", priority = 5)
+    public void successDashboardLoaded() throws InterruptedException {
+        Dashboard.clickPendingFraudulentAndVerify(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingCustomer(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickResubmittedCustomer(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingDBA(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingOldCustomerEKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickResubmittedOldCustomerEKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickGiftRedemption(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickOngoingTransaction(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickPendingVKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickResubmittedVKYC(driver);
+        Dashboard.clickDashboard(driver);
+        Dashboard.clickCustomerFeedback(driver);
+        Dashboard.clickDashboard(driver);
+    }
+
     @Test(testName = "Validate the Invalid Login", priority = 2)
     public void loginWithInvalidCredentials() {
         LoginPage.click1(driver);
@@ -153,7 +179,6 @@ public class TestClass {
         CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
         CustomerTransaction.clickSearch(driver);
         CustomerTransaction.clickElements(driver);
-        Thread.sleep(5000);
         CustomerTransaction.successfullyLoaded(driver);
     }
 
@@ -165,9 +190,7 @@ public class TestClass {
         CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
         CustomerTransaction.clickSearch(driver);
         CustomerTransaction.clickElements(driver);
-        Thread.sleep(5000);
         CustomerTransaction.clickReceived(driver);
-        Thread.sleep(2000);
         CustomerTransaction.successfullyLoaded(driver);
     }
 
@@ -179,52 +202,23 @@ public class TestClass {
         CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
         CustomerTransaction.clickSearch(driver);
         CustomerTransaction.clickElements(driver);
-        Thread.sleep(5000);
         CustomerTransaction.clickFailed(driver);
-        Thread.sleep(2000);
         CustomerTransaction.successfullyLoaded(driver);
     }
 
-//    @Test(testName = "Customer Registration by All Transfers", priority = 5)
-//    public void customerTransactionByAllTransfers() throws InterruptedException {
-//        CustomerTransaction.clickCustomer(driver);
-//        CustomerTransaction.clickCustomerTransaction(driver);
-//        CustomerTransaction.search(driver);
-//        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
-//        CustomerTransaction.clickSearch(driver);
-//        CustomerTransaction.clickElements(driver);
-//        Thread.sleep(5000);
-//        CustomerTransaction.clickAllTransfers(driver);
-//        Thread.sleep(2000);
-//        CustomerTransaction.successfullyLoaded(driver);
-//    }
-
-    @Test(testName = "Dashboard", priority = 5)
-    public void successDashboardLoaded() throws InterruptedException {
-        Dashboard.clickPendingFraudulentAndVerify(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickPendingCustomer(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickResubmittedCustomer(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickPendingDBA(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickPendingOldCustomerEKYC(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickResubmittedOldCustomerEKYC(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickGiftRedemption(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickOngoingTransaction(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickPendingVKYC(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickResubmittedVKYC(driver);
-        Dashboard.clickDashboard(driver);
-        Dashboard.clickCustomerFeedback(driver);
-        Dashboard.clickDashboard(driver);
-
+    @Test(testName = "Customer Registration by All Transfers", priority = 5)
+    public void customerTransactionByAllTransfers() throws InterruptedException {
+        CustomerTransaction.clickCustomer(driver);
+        CustomerTransaction.clickCustomerTransaction(driver);
+        CustomerTransaction.search(driver);
+        CustomerTransaction.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerTransaction.clickSearch(driver);
+        CustomerTransaction.clickElements(driver);
+        CustomerTransaction.clickAllTransfers(driver);
+        CustomerTransaction.successfullyLoaded(driver);
     }
+
+
 
 //    @Test(testName = "Customer bank accounts & cards", priority = 6)
 //    public void searchCustomerUsingBankAccNoUsingCards() throws InterruptedException {
@@ -351,10 +345,10 @@ public class TestClass {
 //        MerchantRegistration.invalidMerchantMobileNo(driver); //Assertion
 //    }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void tearDown() {
+//        driver.quit();
+//    }
 
 
 }
