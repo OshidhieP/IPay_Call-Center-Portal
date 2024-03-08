@@ -253,6 +253,20 @@ public class TestClass {
         CustomerResetCredentialAttempts.successResetAttempt(driver);
     }
 
+    @Test(testName = "Customer Block and Unblock Account", priority = 8)
+    public void customerBlockUnblock() throws InterruptedException {
+        CustomerBlockUnblock.clickCustomer(driver);
+        CustomerBlockUnblock.clickCustomerTransaction(driver);
+        CustomerBlockUnblock.search(driver);
+        CustomerBlockUnblock.enterNic(driver, cusSearchTestData.get("nic").toString());
+        CustomerBlockUnblock.clickSearch(driver);
+        CustomerBlockUnblock.clickElements(driver);
+        CustomerBlockUnblock.clickDropdown(driver);
+        CustomerBlockUnblock.enterRemark(driver,  customer.get("remark").toString());
+        CustomerBlockUnblock.clickSave(driver);
+        CustomerBlockUnblock.popupMessageSuccess(driver);
+    }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
