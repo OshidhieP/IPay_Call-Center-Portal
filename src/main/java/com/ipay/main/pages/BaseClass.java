@@ -29,4 +29,12 @@ public class BaseClass {
         Actions actions = new Actions(driver);
         actions.doubleClick(element).perform();
     }
+
+    protected static void waitInSeconds(WebDriver driver, long seconds) {
+        try {
+            Thread.sleep(seconds * 1000); // Convert seconds to milliseconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

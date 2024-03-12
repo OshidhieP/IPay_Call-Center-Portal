@@ -225,7 +225,6 @@ public class TestClass {
         CustomerBankAccountsCards.clickElements(driver);
         CustomerBankAccountsCards.clickCards(driver);
         CustomerBankAccountsCards.clickDelete(driver);
-
     }
 
     @Test(testName = "Customer bank accounts & cards using bank accounts", priority = 6)
@@ -265,6 +264,72 @@ public class TestClass {
         CustomerBlockUnblock.enterRemark(driver,  customer.get("remark").toString());
         CustomerBlockUnblock.clickSave(driver);
         CustomerBlockUnblock.popupMessageSuccess(driver);
+    }
+    @Test(testName = "Customer Registration Inquiry for All", priority = 8)
+    public void customerRegistrationInquiryAll() throws InterruptedException {
+        CustomerRegistrationInquiry.clickCustomer(driver);
+        CustomerRegistrationInquiry.clickRegistrationInquiry(driver);
+        CustomerRegistrationInquiry.clickVerificationStatusDropdown(driver);
+        CustomerRegistrationInquiry.clickVKYCStatusDropdown(driver);
+        CustomerRegistrationInquiry.setupFromDate(driver, customer.get("fromDate").toString());
+        CustomerRegistrationInquiry.setupToDate(driver, customer.get("toDate").toString());
+        CustomerRegistrationInquiry.clickReviewCustomer(driver);
+        CustomerRegistrationInquiry.successReviewCustomer(driver);
+    }
+    @Test(testName = "Customer Registration Inquiry for Submitted", priority = 8)
+    public void customerRegistrationInquirySubmitted() throws InterruptedException {
+        CustomerRegistrationInquiry.clickCustomer(driver);
+        CustomerRegistrationInquiry.clickRegistrationInquiry(driver);
+        CustomerRegistrationInquiry.clickVerificationStatusDropdownSubmitted(driver);
+        CustomerRegistrationInquiry.clickVKYCStatusDropdownSubmitted(driver);
+        CustomerRegistrationInquiry.setupFromDate(driver, customer.get("fromDate").toString());
+        CustomerRegistrationInquiry.setupToDate(driver, customer.get("toDate").toString());
+        CustomerRegistrationInquiry.clickReviewCustomer(driver);
+        CustomerRegistrationInquiry.successReviewCustomer(driver);
+    }
+    @Test(testName = "Customer Registration Inquiry for Approved", priority = 8)
+    public void customerRegistrationInquiryApproved() throws InterruptedException {
+        CustomerRegistrationInquiry.clickCustomer(driver);
+        CustomerRegistrationInquiry.clickRegistrationInquiry(driver);
+        CustomerRegistrationInquiry.clickVerificationStatusDropdownApproved(driver);
+        CustomerRegistrationInquiry.clickVKYCStatusDropdownApproved(driver);
+        CustomerRegistrationInquiry.setupFromDate(driver, customer.get("fromDate").toString());
+        CustomerRegistrationInquiry.setupToDate(driver, customer.get("toDate").toString());
+        CustomerRegistrationInquiry.clickReviewCustomer(driver);
+        CustomerRegistrationInquiry.successReviewCustomer(driver);
+    }
+    @Test(testName = "Customer Registration Inquiry for Rejected", priority = 8)
+    public void customerRegistrationInquiryRejected() throws InterruptedException {
+        CustomerRegistrationInquiry.clickCustomer(driver);
+        CustomerRegistrationInquiry.clickRegistrationInquiry(driver);
+        CustomerRegistrationInquiry.clickVerificationStatusDropdownRejected(driver);
+        CustomerRegistrationInquiry.clickVKYCStatusDropdown(driver);
+        CustomerRegistrationInquiry.setupFromDate(driver, customer.get("fromDate").toString());
+        CustomerRegistrationInquiry.setupToDate(driver, customer.get("toDate").toString());
+        CustomerRegistrationInquiry.clickReviewCustomer(driver);
+        CustomerRegistrationInquiry.successReviewCustomer(driver);
+    }
+    @Test(testName = "Customer Registration Inquiry for Resubmitted", priority = 8)
+    public void customerRegistrationInquiryResubmitted() throws InterruptedException {
+        CustomerRegistrationInquiry.clickCustomer(driver);
+        CustomerRegistrationInquiry.clickRegistrationInquiry(driver);
+        CustomerRegistrationInquiry.clickVerificationStatusDropdownReSubmitted(driver);
+        CustomerRegistrationInquiry.clickVKYCStatusDropdown(driver);
+        CustomerRegistrationInquiry.setupFromDate(driver, customer.get("fromDate").toString());
+        CustomerRegistrationInquiry.setupToDate(driver, customer.get("toDate").toString());
+        CustomerRegistrationInquiry.clickReviewCustomer(driver);
+        CustomerRegistrationInquiry.successReviewCustomer(driver);
+    }
+    @Test(testName = "Customer Registration Inquiry for Pending", priority = 8)
+    public void customerRegistrationInquiryPending() throws InterruptedException {
+        CustomerRegistrationInquiry.clickCustomer(driver);
+        CustomerRegistrationInquiry.clickRegistrationInquiry(driver);
+        CustomerRegistrationInquiry.clickVerificationStatusDropdownPending(driver);
+        CustomerRegistrationInquiry.clickVKYCStatusDropdownPending(driver);
+        CustomerRegistrationInquiry.setupFromDate(driver, customer.get("fromDate").toString());
+        CustomerRegistrationInquiry.setupToDate(driver, customer.get("toDate").toString());
+        CustomerRegistrationInquiry.clickReviewCustomer(driver);
+        CustomerRegistrationInquiry.successReviewCustomer(driver);
     }
 
     @AfterMethod
