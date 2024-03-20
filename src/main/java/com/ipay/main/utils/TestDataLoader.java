@@ -16,6 +16,12 @@ public class TestDataLoader {
     public static JSONObject CustomerTransaction() {
         return loadTestData("src/main/resources/jsonFiles/customer.json");
     }
+    public static JSONObject KYCReview() {
+        return loadTestData("src/main/resources/jsonFiles/kycReview_data.json");
+    }
+    public static JSONObject VKYCReview() {
+        return loadTestData("src/main/resources/jsonFiles/vkycReview_data.json");
+    }
 
     private static JSONObject loadTestData(String filePath) {
         try {

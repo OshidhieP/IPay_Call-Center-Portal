@@ -78,9 +78,6 @@ public class CustomerBlockUnblock {
         clickElement(driver, CLICK_POPUP_YES);
         Thread.sleep(5000);
         clickElement(driver, CLICK_OKAY);
-        //Customer account successfully activated
-        //jconfirm-content
-        //Customer account successfully blocked
     }
 
     public static void popupMessageSuccess(WebDriver driver) {

@@ -13,16 +13,21 @@ public class TestClass {
     private static JSONObject loginTestData;
     private static JSONObject cusSearchTestData;
     private static JSONObject customer;
+    private static JSONObject kycReview;
+    private static JSONObject vkycReview;
 
     @BeforeMethod
     public void login (){
-        driver = DriverInitialization.initializeDriver();
+//        driver = DriverInitialization.initializeDriver();
+        driver = DriverInitialization.initializeDriverWithPermissions();
         driver.get("https://developer.ipay.lk/ipayCallCenterApp/login");
         driver.manage().window().maximize();
 
         loginTestData = TestDataLoader.LoginTestData();
         cusSearchTestData = TestDataLoader.CustomerSearch();
         customer = TestDataLoader.CustomerTransaction();
+        kycReview = TestDataLoader.KYCReview();
+        vkycReview = TestDataLoader.VKYCReview();
 
         LoginPage.enterUsername(driver, loginTestData.get("validUsername").toString());
         LoginPage.enterPassword(driver, loginTestData.get("validPassword").toString());
@@ -331,9 +336,81 @@ public class TestClass {
         CustomerRegistrationInquiry.clickReviewCustomer(driver);
         CustomerRegistrationInquiry.successReviewCustomer(driver);
     }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
+    @Test(testName = "Kyc Review Approve", priority = 5)
+    public void kycReviewApprove() {
+        KYCReview.clickCustomer(driver);
+        KYCReview.clickKyc(driver);
+        KYCReview.clickOk(driver);
+        KYCReview.search(driver);
+        KYCReview.enterUsername(driver, kycReview.get("username").toString());
+        KYCReview.clickSearch(driver);
+        KYCReview.clickElements(driver);
+        KYCReview.clickReview(driver);
+        KYCReview.clickApprove(driver);
+        KYCReview.clickApproveYes(driver);
     }
+    @Test(testName = "Kyc Review Reject", priority = 5)
+    public void kycReviewReject() {
+        KYCReview.clickCustomer(driver);
+        KYCReview.clickKyc(driver);
+        KYCReview.clickOk(driver);
+        KYCReview.search(driver);
+        KYCReview.enterMobileNo(driver, kycReview.get("mobileNo").toString());
+        KYCReview.clickSearch(driver);
+        KYCReview.clickElements(driver);
+        KYCReview.clickReview(driver);
+        KYCReview.clickCheckbox(driver);
+        KYCReview.clickReject(driver);
+        KYCReview.clickRejectYes(driver);
+    }
+//    @Test(testName = "Vkyc Review Approve With Request Vkyc Review", priority = 5)
+//    public void vkycReviewApproveWithRequestVkycReview() throws InterruptedException {
+//        KYCReview.clickCustomer(driver);
+//        KYCReview.clickKyc(driver);
+//        KYCReview.clickOk(driver);
+//        KYCReview.search(driver);
+//        KYCReview.enterUsername(driver, vkycReview.get("username").toString());
+//        KYCReview.clickSearch(driver);
+//        KYCReview.clickElements(driver);
+//        KYCReview.clickRequestVkycReview(driver);
+//        KYCReview.clickVkycYes(driver);
+//        KYCReview.vkycReview(driver);
+//        KYCReview.vkycLoginEmail(driver, vkycReview.get("login_email").toString());
+//        KYCReview.vkycLoginPassword(driver, vkycReview.get("login_password").toString());
+//        KYCReview.clickVkycSubmit(driver);
+//        KYCReview.clickUnassigned(driver);
+//        KYCReview.clickStart(driver);
+//        KYCReview.click(driver);
+//        KYCReview.moveMouse(driver);
+//        KYCReview.clickGeneralTab(driver);
+//        KYCReview.clickDropdown(driver);
+//    }
+
+    @Test(testName = "Vkyc Review Approve Without Request Vkyc Review", priority = 5)
+    public void vkycReviewApproveWithoutRequestVkycReview() throws InterruptedException {
+        KYCReview.clickCustomer(driver);
+        KYCReview.clickKyc(driver);
+        KYCReview.clickOk(driver);
+        KYCReview.search(driver);
+        KYCReview.enterUsername(driver, vkycReview.get("username").toString());
+        KYCReview.clickSearch(driver);
+        KYCReview.clickElements(driver);
+        KYCReview.clickReviewButton(driver);
+        KYCReview.vkycReview(driver);
+        KYCReview.vkycLoginEmail(driver, vkycReview.get("login_email").toString());
+        KYCReview.vkycLoginPassword(driver, vkycReview.get("login_password").toString());
+        KYCReview.clickVkycSubmit(driver);
+        KYCReview.clickUnassigned(driver);
+        KYCReview.enterSearch(driver, "Gamaralalage");
+        KYCReview.clickStart(driver);
+        KYCReview.click(driver);
+        KYCReview.moveMouse(driver);
+        KYCReview.clickGeneralTab(driver);
+        KYCReview.clickDropdown(driver);
+        KYCReview.refreshPreviousPage(driver);
+    }
+//    @AfterMethod
+//    public void tearDown() {
+//        driver.quit();
+//    }
 }
